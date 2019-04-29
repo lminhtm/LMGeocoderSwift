@@ -14,7 +14,7 @@ LMGeocoderSwift is a simple wrapper for geocoding and reverse geocoding, using b
 
 ## Requirements
 * iOS 8.0 or higher
-* Swift 4.2
+* Swift 5.0
 
 ## Installation
 LMGeocoderSwift is available through [CocoaPods](https://cocoapods.org). To install

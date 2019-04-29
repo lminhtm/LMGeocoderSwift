@@ -29,7 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // You can set your google API key here
-        LMGeocoder.sharedInstance.googleAPIKey = ""
+        LMGeocoder.shared.googleAPIKey = ""
         
         // Start getting current location
         self.locationManager.delegate = self
@@ -89,21 +89,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.longitudeLabel.text = String(format: "%f", coordinate.longitude)
             
             // Start to reverse geocode
-            LMGeocoder.sharedInstance.cancelGeocode()
-            LMGeocoder.sharedInstance.reverseGeocode(coordinate: coordinate,
-                                                     service: .AppleService,
-                                                     completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                                                        
-                                                        // Parse formatted address
-                                                        var formattedAddress: String? = "-"
-                                                        if let address = results?.first, error == nil {
-                                                            formattedAddress = address.formattedAddress
-                                                        }
-                                                        
-                                                        // Update UI
-                                                        DispatchQueue.main.async {
-                                                            self.addressLabel.text = formattedAddress
-                                                        }
+            LMGeocoder.shared.cancelGeocode()
+            LMGeocoder.shared.reverseGeocode(coordinate: coordinate,
+                                             service: .GoogleService,
+                                             completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+                                                
+                                                // Parse formatted address
+                                                var formattedAddress: String? = "-"
+                                                if let address = results?.first, error == nil {
+                                                    formattedAddress = address.formattedAddress
+                                                }
+                                                
+                                                // Update UI
+                                                DispatchQueue.main.async {
+                                                    self.addressLabel.text = formattedAddress
+                                                }
             })
         }
     }

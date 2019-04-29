@@ -80,21 +80,21 @@ public struct LMAddress {
         
         guard let placemark = locationData as? CLPlacemark else { return }
         
-        self.coordinate = placemark.location?.coordinate
-        self.streetNumber = placemark.thoroughfare
-        self.locality = placemark.locality
-        self.subLocality = placemark.subLocality
-        self.administrativeArea = placemark.administrativeArea
-        self.subAdministrativeArea = placemark.subAdministrativeArea
-        self.postalCode = placemark.postalCode
-        self.country = placemark.country
-        self.ISOcountryCode = placemark.isoCountryCode
+        coordinate = placemark.location?.coordinate
+        streetNumber = placemark.thoroughfare
+        locality = placemark.locality
+        subLocality = placemark.subLocality
+        administrativeArea = placemark.administrativeArea
+        subAdministrativeArea = placemark.subAdministrativeArea
+        postalCode = placemark.postalCode
+        country = placemark.country
+        ISOcountryCode = placemark.isoCountryCode
         if #available(iOS 11.0, *) {
             if let postalAddress = placemark.postalAddress {
-                self.formattedAddress = CNPostalAddressFormatter.string(from: postalAddress, style: .mailingAddress)
+                formattedAddress = CNPostalAddressFormatter.string(from: postalAddress, style: .mailingAddress)
             }
         }
-        self.rawSource = placemark
+        rawSource = placemark
     }
     
     private mutating func parseGoogleResponse(locationData: AnyObject) {
@@ -117,23 +117,23 @@ public struct LMAddress {
             }
         }
         
-        self.coordinate = CLLocationCoordinate2DMake(lat, lng)
-        self.streetNumber = self.getComponent(component: "street_number", array: addressComponents, type: "long_name")
-        self.route = self.getComponent(component: "route", array: addressComponents, type: "long_name")
-        self.locality = self.getComponent(component: "locality", array: addressComponents, type: "long_name")
-        self.subLocality = self.getComponent(component: "sublocality", array: addressComponents, type: "long_name")
-        self.administrativeArea = self.getComponent(component: "administrative_area_level_1", array: addressComponents, type: "long_name")
-        self.subAdministrativeArea = self.getComponent(component: "administrative_area_level_2", array: addressComponents, type: "long_name")
-        self.neighborhood = self.getComponent(component: "neighborhood", array: addressComponents, type: "long_name")
-        self.postalCode = self.getComponent(component: "postal_code", array: addressComponents, type: "short_name")
-        self.country = self.getComponent(component: "country", array: addressComponents, type: "long_name")
-        self.ISOcountryCode = self.getComponent(component: "country", array: addressComponents, type: "short_name")
+        coordinate = CLLocationCoordinate2DMake(lat, lng)
+        streetNumber = getComponent("street_number", inArray: addressComponents, ofType: "long_name")
+        route = getComponent("route", inArray: addressComponents, ofType: "long_name")
+        locality = getComponent("locality", inArray: addressComponents, ofType: "long_name")
+        subLocality = getComponent("sublocality", inArray: addressComponents, ofType: "long_name")
+        administrativeArea = getComponent("administrative_area_level_1", inArray: addressComponents, ofType: "long_name")
+        subAdministrativeArea = getComponent("administrative_area_level_2", inArray: addressComponents, ofType: "long_name")
+        neighborhood = getComponent("neighborhood", inArray: addressComponents, ofType: "long_name")
+        postalCode = getComponent("postal_code", inArray: addressComponents, ofType: "short_name")
+        country = getComponent("country", inArray: addressComponents, ofType: "long_name")
+        ISOcountryCode = getComponent("country", inArray: addressComponents, ofType: "short_name")
         self.formattedAddress = formattedAddress
-        self.lines = formattedAddress?.components(separatedBy: ", ")
-        self.rawSource = locationData
+        lines = formattedAddress?.components(separatedBy: ", ")
+        rawSource = locationData
     }
     
-    private func getComponent(component: String, array: Any?, type: String) -> String? {
+    private func getComponent(_ component: String, inArray array: Any?, ofType type: String) -> String? {
         
         guard let array = array as? NSArray else { return nil }
         
