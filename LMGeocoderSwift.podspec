@@ -14,17 +14,15 @@ Pod::Spec.new do |s|
 Simple wrapper for geocoding and reverse geocoding, written in Swift, using both Google Geocoding API and Apple iOS Geocoding Framework.
                        DESC
 
-  s.homepage         = 'https://github.com/lminhtm/LMGeocoder'
-  s.screenshots      = 'https://raw.github.com/lminhtm/LMGeocoder/master/Screenshots/screenshot.png'
+  s.homepage         = 'https://github.com/lminhtm/LMGeocoderSwift'
+  s.screenshots      = 'https://raw.github.com/lminhtm/LMGeocoderSwift/master/Screenshots/screenshot.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'LMinh' => 'lminhtm@gmail.com' }
-  s.source           = { :git => 'https://github.com/lminhtm/LMGeocoder.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/lminhtm/LMGeocoderSwift.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
-  s.swift_version = '4.0'
+  s.swift_version = '5.0'
   
   s.source_files = 'LMGeocoderSwift/Classes/**/*'
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'CoreLocation', 'Contacts'
 end

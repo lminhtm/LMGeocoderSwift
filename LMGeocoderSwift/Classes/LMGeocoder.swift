@@ -24,7 +24,7 @@ public enum LMGeocoderService {
 public typealias LMGeocodeCallback = (_ results: Array<LMAddress>?, _ error: Error?) -> Void
 
 /// Exposes a service for geocoding and reverse geocoding.
-open class LMGeocoder: NSObject {
+open class LMGeocoder {
     
     // MARK: - PROPERTIES
     

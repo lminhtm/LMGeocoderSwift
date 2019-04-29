@@ -12,51 +12,51 @@ import Contacts
 
 /// A result from a reverse geocode request, containing a human-readable address.
 /// Some of the fields may be nil, indicating they are not present.
-open class LMAddress: NSObject {
+public struct LMAddress {
 
     // MARK: - PROPERTIES
     
     /// The location coordinate.
-    open var coordinate: CLLocationCoordinate2D?
+    public var coordinate: CLLocationCoordinate2D?
     
     /// The precise street address.
-    open var streetNumber: String?
+    public var streetNumber: String?
     
     /// The named route.
-    open var route: String?
+    public var route: String?
     
     /// The incorporated city or town political entity.
-    open var locality: String?
+    public var locality: String?
     
     /// The first-order civil entity below a localit.
-    open var subLocality: String?
+    public var subLocality: String?
     
     /// The civil entity below the country level.
-    open var administrativeArea: String?
+    public var administrativeArea: String?
     
     /// The additional administrative area information.
-    open var subAdministrativeArea: String?
+    public var subAdministrativeArea: String?
     
     /// The neighborhood information.
-    open var neighborhood: String?
+    public var neighborhood: String?
     
     /// The Postal/Zip code.
-    open var postalCode: String?
+    public var postalCode: String?
     
     /// The country name.
-    open var country: String?
+    public var country: String?
     
     /// The ISO country code.
-    open var ISOcountryCode: String?
+    public var ISOcountryCode: String?
     
     /// The formatted address.
-    open var formattedAddress: String?
+    public var formattedAddress: String?
     
     /// An array of NSString containing formatted lines of the address.
-    open var lines: [String]?
+    public var lines: [String]?
     
     /// The raw source object.
-    open var rawSource: AnyObject?
+    public var rawSource: AnyObject?
     
     // MARK: - INIT
     
@@ -66,7 +66,6 @@ open class LMAddress: NSObject {
     ///   - locationData: Response object recieved from server
     ///   - serviceType: Pass here kLMGeocoderGoogleService or kLMGeocoderAppleService
     init(locationData: AnyObject, serviceType: LMGeocoderService) {
-        super.init()
         switch serviceType {
         case .AppleService:
             self.parseAppleResponse(locationData: locationData)
@@ -77,7 +76,7 @@ open class LMAddress: NSObject {
     
     // MARK: SUPPORT
     
-    private func parseAppleResponse(locationData: AnyObject) {
+    private mutating func parseAppleResponse(locationData: AnyObject) {
         
         guard let placemark = locationData as? CLPlacemark else { return }
         
@@ -98,7 +97,7 @@ open class LMAddress: NSObject {
         self.rawSource = placemark
     }
     
-    private func parseGoogleResponse(locationData: AnyObject) {
+    private mutating func parseGoogleResponse(locationData: AnyObject) {
         
         guard let locationDict = locationData as? Dictionary<String, Any> else { return }
         
