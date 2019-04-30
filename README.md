@@ -24,6 +24,9 @@ it, simply add the following line to your Podfile:
 pod 'LMGeocoderSwift'
 ```
 
+## Objective-C Version
+https://github.com/lminhtm/LMGeocoder
+
 ## Usage
 #### Geocoding
 ```Swift
