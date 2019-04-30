@@ -30,30 +30,29 @@ https://github.com/lminhtm/LMGeocoder
 ## Usage
 #### Geocoding
 ```Swift
-LMGeocoder.sharedInstance.geocode(address: addressString,
-                                  service: .AppleService,
-                                  completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                                        if let address = results?.first, error == nil {
-                                            NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0),
-                                            \(address.coordinate?.longitude ?? 0))")
-                                        }
+LMGeocoder.shared.geocode(address: addressString,
+                          service: .AppleService,
+                          completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+                              if let address = results?.first, error == nil {
+                                  NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0), \(address.coordinate?.longitude ?? 0))")
+                              }
 })
 ```
 
 #### Reverse Geocoding
 ```Swift
-LMGeocoder.sharedInstance.reverseGeocode(coordinate: coordinate,
-                                         service: .AppleService,
-                                         completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                                                if let address = results?.first, error == nil {
-                                                    NSLog("Address: \(address.formattedAddress ?? "-")")
-                                                }
+LMGeocoder.shared.reverseGeocode(coordinate: coordinate,
+                                 service: .AppleService,
+                                 completionHandler: { (results: Array<LMAddress>?, error: Error?) in
+                                    if let address = results?.first, error == nil {
+                                        NSLog("Address: \(address.formattedAddress ?? "-")")
+                                    }
 })
 ```
 
 #### Cancel Geocode
 ```Swift
-LMGeocoder.sharedInstance.cancelGeocode()
+LMGeocoder.shared.cancelGeocode()
 ```
 
 ## Example
