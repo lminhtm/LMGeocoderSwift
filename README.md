@@ -30,24 +30,28 @@ https://github.com/lminhtm/LMGeocoder
 ## Usage
 #### Geocoding
 ```Swift
-LMGeocoder.shared.geocode(address: addressString,
-                          service: .AppleService,
-                          completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                              if let address = results?.first, error == nil {
-                                  NSLog("Coordinate: (\(address.coordinate?.latitude ?? 0), \(address.coordinate?.longitude ?? 0))")
-                              }
-})
+LMGeocoder.shared.geocode(addressString, service: .AppleService) { (results, error) in
+                
+    // Update UI
+    if let address = results?.first, error == nil {
+        DispatchQueue.main.async {
+            self.coordinateLabel.text = "(\(address.coordinate?.latitude ?? 0), \(address.coordinate?.longitude ?? 0))"
+        }
+    }
+}
 ```
 
 #### Reverse Geocoding
 ```Swift
-LMGeocoder.shared.reverseGeocode(coordinate: coordinate,
-                                 service: .AppleService,
-                                 completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                                    if let address = results?.first, error == nil {
-                                        NSLog("Address: \(address.formattedAddress ?? "-")")
-                                    }
-})
+LMGeocoder.shared.reverseGeocode(coordinate, service: .AppleService) { (results, error) in
+                
+    // Update UI
+    if let address = results?.first, error == nil {
+        DispatchQueue.main.async {
+            self.addressLabel.text = address.formattedAddress ?? "-"
+        }
+    }
+}
 ```
 
 #### Cancel Geocode
