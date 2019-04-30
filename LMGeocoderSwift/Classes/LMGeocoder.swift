@@ -61,7 +61,7 @@ open class LMGeocoder {
     ///   - address: The string describing the location you want to look up.
     ///   - service: The service API used to geocode.
     ///   - completionHandler: The callback to invoke with the geocode results. The callback will be invoked asynchronously from the main thread.
-    open func geocode(address: String, service: LMGeocoderService, completionHandler: LMGeocodeCallback?) {
+    open func geocode(_ address: String, service: LMGeocoderService, completionHandler: LMGeocodeCallback?) {
         
         isGeocoding = true
         
@@ -116,7 +116,7 @@ open class LMGeocoder {
     ///   - address: The coordinate to look up.
     ///   - service: The service API used to reverse geocode.
     ///   - completionHandler: The callback to invoke with the reverse geocode results.The callback will be invoked asynchronously from the main thread.
-    open func reverseGeocode(coordinate: CLLocationCoordinate2D, service: LMGeocoderService, completionHandler: LMGeocodeCallback?) {
+    open func reverseGeocode(_ coordinate: CLLocationCoordinate2D, service: LMGeocoderService, completionHandler: LMGeocodeCallback?) {
         
         isGeocoding = true
         

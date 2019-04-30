@@ -90,21 +90,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             // Start to reverse geocode
             LMGeocoder.shared.cancelGeocode()
-            LMGeocoder.shared.reverseGeocode(coordinate: coordinate,
-                                             service: .GoogleService,
-                                             completionHandler: { (results: Array<LMAddress>?, error: Error?) in
-                                                
-                                                // Parse formatted address
-                                                var formattedAddress: String? = "-"
-                                                if let address = results?.first, error == nil {
-                                                    formattedAddress = address.formattedAddress
-                                                }
-                                                
-                                                // Update UI
-                                                DispatchQueue.main.async {
-                                                    self.addressLabel.text = formattedAddress
-                                                }
-            })
+            LMGeocoder.shared.reverseGeocode(coordinate, service: .AppleService) { (results, error) in
+                
+                // Update UI
+                if let address = results?.first, error == nil {
+                    DispatchQueue.main.async {
+                        self.addressLabel.text = address.formattedAddress ?? "-"
+                    }
+                }
+            }
         }
     }
 }
