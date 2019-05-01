@@ -21,7 +21,7 @@ Simple wrapper for geocoding and reverse geocoding, written in Swift, using both
   s.source           = { :git => 'https://github.com/lminhtm/LMGeocoderSwift.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
   
   s.source_files = 'LMGeocoderSwift/Classes/**/*'
   s.frameworks = 'UIKit', 'CoreLocation', 'Contacts'
