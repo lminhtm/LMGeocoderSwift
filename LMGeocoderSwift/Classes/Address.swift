@@ -1,18 +1,19 @@
 //
-//  LMAddress.swift
+//  Address.swift
 //  LMGeocoderSwift
 //
 //  Created by LMinh on 12/18/18.
 //  Copyright © 2018 LMinh. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CoreLocation
 import Contacts
 
 /// A result from a reverse geocode request, containing a human-readable address.
 /// Some of the fields may be nil, indicating they are not present.
-public struct LMAddress {
+public struct Address {
 
     // MARK: - PROPERTIES
     
@@ -65,7 +66,7 @@ public struct LMAddress {
     /// - Parameters:
     ///   - locationData: Response object recieved from server
     ///   - serviceType: Pass here kLMGeocoderGoogleService or kLMGeocoderAppleService
-    init(locationData: AnyObject, serviceType: LMGeocoderService) {
+    init(locationData: AnyObject, serviceType: GeocoderService) {
         switch serviceType {
         case .AppleService:
             self.parseAppleResponse(locationData: locationData)
@@ -149,5 +150,62 @@ public struct LMAddress {
             return dict[type] as? String
         }
         return nil;
+    }
+}
+
+extension Address: Codable {
+    
+    enum CodingKeys: String, CodingKey {
+        case latitude
+        case longitude
+        case streetNumber = "street_number"
+        case route
+        case locality
+        case subLocality = "sub_locality"
+        case administrativeArea = "administrative_area"
+        case subAdministrativeArea = "sub_administrative_area"
+        case neighborhood
+        case postalCode = "postal_code"
+        case country
+        case ISOcountryCode = "iso_country_code"
+        case formattedAddress = "formatted_address"
+        case lines
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let latitude = try values.decode(CLLocationDegrees.self, forKey: .latitude)
+        let longitude = try values.decode(CLLocationDegrees.self, forKey: .longitude)
+        self.coordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        self.streetNumber = try values.decode(String.self, forKey: .streetNumber)
+        self.route = try values.decode(String.self, forKey: .route)
+        self.locality = try values.decode(String.self, forKey: .locality)
+        self.subLocality = try values.decode(String.self, forKey: .subLocality)
+        self.administrativeArea = try values.decode(String.self, forKey: .administrativeArea)
+        self.subAdministrativeArea = try values.decode(String.self, forKey: .subAdministrativeArea)
+        self.neighborhood = try values.decode(String.self, forKey: .neighborhood)
+        self.postalCode = try values.decode(String.self, forKey: .postalCode)
+        self.country = try values.decode(String.self, forKey: .country)
+        self.ISOcountryCode = try values.decode(String.self, forKey: .ISOcountryCode)
+        self.formattedAddress = try values.decode(String.self, forKey: .formattedAddress)
+        self.lines = try values.decode([String].self, forKey: .lines)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(coordinate?.latitude, forKey: .latitude)
+        try container.encode(coordinate?.longitude, forKey: .longitude)
+        try container.encode(streetNumber, forKey: .streetNumber)
+        try container.encode(route, forKey: .route)
+        try container.encode(locality, forKey: .locality)
+        try container.encode(subLocality, forKey: .subLocality)
+        try container.encode(administrativeArea, forKey: .administrativeArea)
+        try container.encode(subAdministrativeArea, forKey: .subAdministrativeArea)
+        try container.encode(neighborhood, forKey: .neighborhood)
+        try container.encode(postalCode, forKey: .postalCode)
+        try container.encode(country, forKey: .country)
+        try container.encode(ISOcountryCode, forKey: .ISOcountryCode)
+        try container.encode(formattedAddress, forKey: .formattedAddress)
+        try container.encode(lines, forKey: .lines)
     }
 }

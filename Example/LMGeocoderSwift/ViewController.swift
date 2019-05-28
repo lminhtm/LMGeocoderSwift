@@ -24,12 +24,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var addressLabel: UILabel!
     
     // MARK: VIEW LIFECYCLE
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         // You can set your google API key here
-        LMGeocoder.shared.googleAPIKey = ""
+        Geocoder.shared.googleAPIKey = "YOUR_API_KEY"
         
         // Start getting current location
         self.locationManager.delegate = self
@@ -80,6 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: LOCATION MANAGER DELEGATE
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let coordinate = locations.last?.coordinate {
@@ -89,8 +91,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.longitudeLabel.text = String(format: "%f", coordinate.longitude)
             
             // Start to reverse geocode
-            LMGeocoder.shared.cancelGeocode()
-            LMGeocoder.shared.reverseGeocode(coordinate, service: .AppleService) { (results, error) in
+            Geocoder.shared.cancelGeocode()
+            Geocoder.shared.reverseGeocode(coordinate, service: .AppleService) { (results, error) in
                 
                 // Update UI
                 if let address = results?.first, error == nil {

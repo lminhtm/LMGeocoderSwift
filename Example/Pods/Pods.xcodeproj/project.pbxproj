@@ -12,11 +12,11 @@
 		2F18AC16E922BF6892D9140329412B6B /* LMGeocoderSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EAF39672773DA1320995187998AE31 /* LMGeocoderSwift-dummy.m */; };
 		31A823F85FB389C9927F516A168F4498 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		39B2CEAE98F92B928594CBF992AE51E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		94EC14F5F8F579F78BE5C67EFCBBF121 /* LMAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F48D82A4FC4B65E1DADC60C2E386CE /* LMAddress.swift */; };
+		94EC14F5F8F579F78BE5C67EFCBBF121 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F48D82A4FC4B65E1DADC60C2E386CE /* Address.swift */; };
 		A96B41D1DD324BB1B4AC73F22645570B /* Pods-LMGeocoderSwift_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B225991D94E09DABC24D90631B502B48 /* Pods-LMGeocoderSwift_Tests-dummy.m */; };
 		AA80135BFAD36573E8D1E868A2F92617 /* LMGeocoderSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DFD16461FBDF273277786BCA0AA2DAC5 /* LMGeocoderSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE3CBD4E4AA720AC539FEE080AE8DE11 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		BE15594F4241F9F7CB66417C29F2B413 /* LMGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB3076A64D643186946E2FC7A99359 /* LMGeocoder.swift */; };
+		BE15594F4241F9F7CB66417C29F2B413 /* Geocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAB3076A64D643186946E2FC7A99359 /* Geocoder.swift */; };
 		EDED5ABBB07900FD55E13A3FAF15AFC1 /* Pods-LMGeocoderSwift_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AC66A0DA5D8B5B68F82D4200F475280 /* Pods-LMGeocoderSwift_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -48,7 +48,7 @@
 		3B5E342C9E0A3859B5EE6D695351961D /* Pods-LMGeocoderSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LMGeocoderSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		41D0B5028D68D7907B5B8E8025B0FEB7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E55C38602FE3C8B4AA6482DC4F7BE4A /* Pods-LMGeocoderSwift_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LMGeocoderSwift_Tests.modulemap"; sourceTree = "<group>"; };
-		54F48D82A4FC4B65E1DADC60C2E386CE /* LMAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LMAddress.swift; path = LMGeocoderSwift/Classes/LMAddress.swift; sourceTree = "<group>"; };
+		54F48D82A4FC4B65E1DADC60C2E386CE /* Address.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Address.swift; path = LMGeocoderSwift/Classes/Address.swift; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		643267D26F64732547B3099156A02253 /* LMGeocoderSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LMGeocoderSwift-prefix.pch"; sourceTree = "<group>"; };
 		7236AEE3EF2877F8AB48BE68F74CE88B /* LMGeocoderSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LMGeocoderSwift.xcconfig; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		8D68E39FE40E3E8A53F687D808C0C15B /* Pods-LMGeocoderSwift_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LMGeocoderSwift_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96DB77C8C1C663CCFD7D7797108EF2FA /* Pods-LMGeocoderSwift_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LMGeocoderSwift_Example-resources.sh"; sourceTree = "<group>"; };
-		9BAB3076A64D643186946E2FC7A99359 /* LMGeocoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LMGeocoder.swift; path = LMGeocoderSwift/Classes/LMGeocoder.swift; sourceTree = "<group>"; };
+		9BAB3076A64D643186946E2FC7A99359 /* Geocoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Geocoder.swift; path = LMGeocoderSwift/Classes/Geocoder.swift; sourceTree = "<group>"; };
 		A077362567A60CA3C99F35ED09A359DE /* Pods-LMGeocoderSwift_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LMGeocoderSwift_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		A6EAF39672773DA1320995187998AE31 /* LMGeocoderSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LMGeocoderSwift-dummy.m"; sourceTree = "<group>"; };
 		A7A6D6A013970600519B947B1D57F2BB /* Pods-LMGeocoderSwift_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LMGeocoderSwift_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 		40ABD9AD95F42B18D4D7A897A7E6A416 /* LMGeocoderSwift */ = {
 			isa = PBXGroup;
 			children = (
-				54F48D82A4FC4B65E1DADC60C2E386CE /* LMAddress.swift */,
-				9BAB3076A64D643186946E2FC7A99359 /* LMGeocoder.swift */,
+				54F48D82A4FC4B65E1DADC60C2E386CE /* Address.swift */,
+				9BAB3076A64D643186946E2FC7A99359 /* Geocoder.swift */,
 				D3F948A7B47B98F8C8766C48BC1C7BBD /* Pod */,
 				CC70E3648EFEC9C4CE68240FBA82FE01 /* Support Files */,
 			);
@@ -387,8 +387,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94EC14F5F8F579F78BE5C67EFCBBF121 /* LMAddress.swift in Sources */,
-				BE15594F4241F9F7CB66417C29F2B413 /* LMGeocoder.swift in Sources */,
+				94EC14F5F8F579F78BE5C67EFCBBF121 /* Address.swift in Sources */,
+				BE15594F4241F9F7CB66417C29F2B413 /* Geocoder.swift in Sources */,
 				2F18AC16E922BF6892D9140329412B6B /* LMGeocoderSwift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

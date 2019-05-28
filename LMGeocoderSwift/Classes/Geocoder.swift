@@ -1,5 +1,5 @@
 //
-//  LMGeocoder.swift
+//  Geocoder.swift
 //  LMGeocoderSwift
 //
 //  Created by LMinh on 12/18/18.
@@ -10,14 +10,13 @@ import UIKit
 import CoreLocation
 
 /// LMGeocoder error codes.
-public enum LMGeocoderError: Error {
-    case InvalidCoordinate
-    case InvalidAddressString
-    case Internal
+public enum GeocoderError: Error {
+    case invalidCoordinate
+    case invalidAddressString
 }
 
 /// LMGeocoder service API.
-public enum LMGeocoderService {
+public enum GeocoderService {
     case GoogleService
     case AppleService
 }
@@ -26,10 +25,10 @@ public enum LMGeocoderService {
 private let googleGeocodingURLString = "https://maps.googleapis.com/maps/api/geocode/json?sensor=true"
 
 /// Handler that reports a geocoding response, or error.
-public typealias LMGeocodeCallback = (_ results: Array<LMAddress>?, _ error: Error?) -> Void
+public typealias GeocodeCallback = (_ results: [Address]?, _ error: Error?) -> Void
 
 /// Exposes a service for geocoding and reverse geocoding.
-open class LMGeocoder {
+open class Geocoder {
     
     // MARK: - PROPERTIES
     
@@ -47,9 +46,9 @@ open class LMGeocoder {
     
     // MARK: SINGLETON
     
-    public static let shared = LMGeocoder()
+    public static let shared = Geocoder()
     
-    // MARK: PUBLIC
+    // MARK: GEOCODING
     
     /// Submits a forward-geocoding request using the specified string.
     /// After initiating a forward-geocoding request, do not attempt to initiate another forward- or reverse-geocoding request.
@@ -61,7 +60,7 @@ open class LMGeocoder {
     ///   - address: The string describing the location you want to look up.
     ///   - service: The service API used to geocode.
     ///   - completionHandler: The callback to invoke with the geocode results. The callback will be invoked asynchronously from the main thread.
-    open func geocode(_ address: String, service: LMGeocoderService, completionHandler: LMGeocodeCallback?) {
+    public func geocode(_ address: String, service: GeocoderService, completionHandler: GeocodeCallback?) {
         
         isGeocoding = true
         
@@ -70,7 +69,7 @@ open class LMGeocoder {
             
             isGeocoding = false
             if let completionHandler = completionHandler {
-                completionHandler(nil, LMGeocoderError.InvalidAddressString)
+                completionHandler(nil, GeocoderError.invalidAddressString)
             }
             return
         }
@@ -116,7 +115,7 @@ open class LMGeocoder {
     ///   - address: The coordinate to look up.
     ///   - service: The service API used to reverse geocode.
     ///   - completionHandler: The callback to invoke with the reverse geocode results.The callback will be invoked asynchronously from the main thread.
-    open func reverseGeocode(_ coordinate: CLLocationCoordinate2D, service: LMGeocoderService, completionHandler: LMGeocodeCallback?) {
+    public func reverseGeocode(_ coordinate: CLLocationCoordinate2D, service: GeocoderService, completionHandler: GeocodeCallback?) {
         
         isGeocoding = true
         
@@ -125,7 +124,7 @@ open class LMGeocoder {
             
             isGeocoding = false
             if let completionHandler = completionHandler {
-                completionHandler(nil, LMGeocoderError.InvalidCoordinate)
+                completionHandler(nil, GeocoderError.invalidCoordinate)
             }
             return
         }
@@ -163,15 +162,18 @@ open class LMGeocoder {
     }
     
     /// Cancels a pending geocoding request.
-    open func cancelGeocode() {
+    public func cancelGeocode() {
         appleGeocoder.cancelGeocode()
         googleGeocoderTask?.cancel()
     }
-    
-    // MARK: INTERNAL
+}
+
+// MARK: - SUPPORT
+
+extension Geocoder {
     
     /// Build asynchronous request
-    func buildAsynchronousRequest(urlString: String, completionHandler: LMGeocodeCallback?) {
+    func buildAsynchronousRequest(urlString: String, completionHandler: GeocodeCallback?) {
         
         let urlString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let url = URL(string: urlString)!
@@ -186,7 +188,7 @@ open class LMGeocoder {
                     // Check status value
                     if let status = result["status"] as? String, status == "OK" {
                         // Status OK --> Parse response results
-                        let locationDicts = result["results"] as? Array<AnyObject>
+                        let locationDicts = result["results"] as? [AnyObject]
                         let finalResults = self.parseGeocodingResponse(locationDicts, service: .GoogleService)
                         if let completionHandler = completionHandler {
                             completionHandler(finalResults, nil)
@@ -217,13 +219,13 @@ open class LMGeocoder {
     }
     
     /// Parse geocoding response
-    func parseGeocodingResponse(_ results: Array<AnyObject>?, service: LMGeocoderService) -> Array<LMAddress>? {
+    func parseGeocodingResponse(_ results: [AnyObject]?, service: GeocoderService) -> [Address]? {
         
         guard let results = results else { return nil }
         
-        var finalResults = Array<LMAddress>()
+        var finalResults = [Address]()
         for respondObject in results {
-            let address = LMAddress(locationData: respondObject, serviceType: service)
+            let address = Address(locationData: respondObject, serviceType: service)
             finalResults.append(address)
         }
         return finalResults
