@@ -217,6 +217,7 @@
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 6HXC4UA9AV;
 						LastSwiftMigration = 1020;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -486,13 +487,17 @@
 			baseConfigurationReference = 37ECF9021C3EB42DE3B2C54A /* Pods-LMGeocoderSwift_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LMGeocoderSwift_Example.entitlements;
 				DEVELOPMENT_TEAM = 6HXC4UA9AV;
 				INFOPLIST_FILE = LMGeocoderSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.2;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoderSwift.demo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LMGeocoderSwift_Example;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -501,13 +506,17 @@
 			baseConfigurationReference = 37AA6C578E02CF00C47A5BC2 /* Pods-LMGeocoderSwift_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LMGeocoderSwift_Example.entitlements;
 				DEVELOPMENT_TEAM = 6HXC4UA9AV;
 				INFOPLIST_FILE = LMGeocoderSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0.2;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lminhtm.LMGeocoderSwift.demo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LMGeocoderSwift_Example;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -515,6 +524,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FDEF6191B41A86484250E43C /* Pods-LMGeocoderSwift_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 6HXC4UA9AV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -536,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8BE42FCF86A1376BC26DF88C /* Pods-LMGeocoderSwift_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 6HXC4UA9AV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

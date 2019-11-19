@@ -30,7 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         // You can set your google API key here
-        Geocoder.shared.googleAPIKey = "YOUR_API_KEY"
+        Geocoder.shared.googleAPIKey = "AIzaSyCsJgBk7TOm5Rw2mGMh6QWmsC9H9_g8odI"
         
         // Start getting current location
         self.locationManager.delegate = self
@@ -93,7 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Start to reverse geocode
         print("Start to reverse geocode with \(coordinate.latitude), \(coordinate.longitude)")
         Geocoder.shared.cancelGeocode()
-        Geocoder.shared.reverseGeocodeCoordinate(coordinate, service: .apple, alternativeService: .undefined) { (results, error) in
+        Geocoder.shared.reverseGeocodeCoordinate(coordinate, service: .google, alternativeService: .apple) { (results, error) in
             
             // Update UI
             if let address = results?.first, error == nil {
