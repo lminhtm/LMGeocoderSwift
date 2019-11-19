@@ -30,7 +30,7 @@ https://github.com/lminhtm/LMGeocoder
 ## Usage
 #### Geocoding
 ```Swift
-Geocoder.shared.geocode(addressString, service: .AppleService) { (results, error) in
+Geocoder.shared.geocodeAddressString(addressString, service: .apple, alternativeService: .google) { (results, error) in
                 
     // Update UI
     if let address = results?.first, error == nil {
@@ -43,7 +43,7 @@ Geocoder.shared.geocode(addressString, service: .AppleService) { (results, error
 
 #### Reverse Geocoding
 ```Swift
-Geocoder.shared.reverseGeocode(coordinate, service: .AppleService) { (results, error) in
+Geocoder.shared.reverseGeocodeCoordinate(coordinate, service: .apple, alternativeService: .google) { (results, error) in
                 
     // Update UI
     if let address = results?.first, error == nil {
