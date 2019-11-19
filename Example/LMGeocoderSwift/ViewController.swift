@@ -35,7 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Start getting current location
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        self.locationManager.distanceFilter = 10
+        self.locationManager.distanceFilter = 20
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         
@@ -84,21 +84,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        if let coordinate = locations.last?.coordinate {
+        guard let coordinate = locations.last?.coordinate else { return }
+        
+        // Update UI
+        self.latitudeLabel.text = String(format: "%f", coordinate.latitude)
+        self.longitudeLabel.text = String(format: "%f", coordinate.longitude)
+        
+        // Start to reverse geocode
+        print("Start to reverse geocode with \(coordinate.latitude), \(coordinate.longitude)")
+        Geocoder.shared.cancelGeocode()
+        Geocoder.shared.reverseGeocodeCoordinate(coordinate, service: .apple, alternativeService: .undefined) { (results, error) in
             
             // Update UI
-            self.latitudeLabel.text = String(format: "%f", coordinate.latitude)
-            self.longitudeLabel.text = String(format: "%f", coordinate.longitude)
-            
-            // Start to reverse geocode
-            Geocoder.shared.cancelGeocode()
-            Geocoder.shared.reverseGeocode(coordinate, service: .AppleService) { (results, error) in
-                
-                // Update UI
-                if let address = results?.first, error == nil {
-                    DispatchQueue.main.async {
-                        self.addressLabel.text = address.formattedAddress ?? "-"
-                    }
+            if let address = results?.first, error == nil {
+                print("Reverse geocode result for \(coordinate.latitude), \(coordinate.longitude): \n\(address.formattedAddress ?? "-")\n");
+                DispatchQueue.main.async {
+                    self.addressLabel.text = address.formattedAddress ?? "-"
                 }
             }
         }

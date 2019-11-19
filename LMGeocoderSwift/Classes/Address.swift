@@ -48,7 +48,7 @@ public struct Address {
     public var country: String?
     
     /// The ISO country code.
-    public var ISOcountryCode: String?
+    public var isoCountryCode: String?
     
     /// The formatted address.
     public var formattedAddress: String?
@@ -57,7 +57,7 @@ public struct Address {
     public var lines: [String]?
     
     /// The raw source object.
-    public var rawSource: AnyObject?
+    public var rawSource: Any?
     
     // MARK: - INIT
     
@@ -66,21 +66,25 @@ public struct Address {
     /// - Parameters:
     ///   - locationData: Response object recieved from server
     ///   - serviceType: Pass here kLMGeocoderGoogleService or kLMGeocoderAppleService
-    init(locationData: AnyObject, serviceType: GeocoderService) {
+    init?(locationData: Any, serviceType: GeocoderService) {
         switch serviceType {
-        case .AppleService:
-            self.parseAppleResponse(locationData: locationData)
+        case .apple:
+            guard let placemark = locationData as? CLPlacemark else { return nil }
+            parseAppleResponse(placemark)
+        case .google:
+            guard let locationDict = locationData as? [String: Any] else { return nil }
+            parseGoogleResponse(locationDict)
+        case .here:
+            guard let locationDict = locationData as? [String: Any] else { return nil }
+            parseHereResponse(locationDict)
         default:
-            self.parseGoogleResponse(locationData: locationData)
+            return nil
         }
     }
     
     // MARK: SUPPORT
     
-    private mutating func parseAppleResponse(locationData: AnyObject) {
-        
-        guard let placemark = locationData as? CLPlacemark else { return }
-        
+    private mutating func parseAppleResponse(_ placemark: CLPlacemark) {
         coordinate = placemark.location?.coordinate
         streetNumber = placemark.thoroughfare
         locality = placemark.locality
@@ -89,7 +93,7 @@ public struct Address {
         subAdministrativeArea = placemark.subAdministrativeArea
         postalCode = placemark.postalCode
         country = placemark.country
-        ISOcountryCode = placemark.isoCountryCode
+        isoCountryCode = placemark.isoCountryCode
         if #available(iOS 11.0, *) {
             if let postalAddress = placemark.postalAddress {
                 formattedAddress = CNPostalAddressFormatter.string(from: postalAddress, style: .mailingAddress)
@@ -98,17 +102,14 @@ public struct Address {
         rawSource = placemark
     }
     
-    private mutating func parseGoogleResponse(locationData: AnyObject) {
-        
-        guard let locationDict = locationData as? Dictionary<String, Any> else { return }
-        
+    private mutating func parseGoogleResponse(_ locationDict: [String: Any]) {
         let addressComponents = locationDict["address_components"]
-        let formattedAddress = locationDict["formatted_address"] as? String
+        let address = locationDict["formatted_address"] as? String
         
         var lat = 0.0
         var lng = 0.0
-        if let geometry = locationDict["geometry"] as? Dictionary<String, Any> {
-            if let location = geometry["location"] as? Dictionary<String, Any> {
+        if let geometry = locationDict["geometry"] as? [String: Any] {
+            if let location = geometry["location"] as? [String: Any] {
                 if let latitude = location["lat"] as? Double {
                     lat = Double(latitude)
                 }
@@ -128,10 +129,40 @@ public struct Address {
         neighborhood = getComponent("neighborhood", inArray: addressComponents, ofType: "long_name")
         postalCode = getComponent("postal_code", inArray: addressComponents, ofType: "short_name")
         country = getComponent("country", inArray: addressComponents, ofType: "long_name")
-        ISOcountryCode = getComponent("country", inArray: addressComponents, ofType: "short_name")
-        self.formattedAddress = formattedAddress
+        isoCountryCode = getComponent("country", inArray: addressComponents, ofType: "short_name")
+        formattedAddress = address
         lines = formattedAddress?.components(separatedBy: ", ")
-        rawSource = locationData
+        rawSource = locationDict
+    }
+    
+    private mutating func parseHereResponse(_ locationDict: [String: Any]) {
+        guard
+            let location = locationDict["Location"] as? [String: Any],
+            let addressDict = location["Address"] as? [String: Any]
+        else {
+            return
+        }
+        
+        var lat = 0.0
+        var lng = 0.0
+        if let displayPosition = location["DisplayPosition"] as? [String: Any] {
+            if let latitude = displayPosition["Latitude"] as? Double {
+                lat = Double(latitude)
+            }
+            if let longitute = displayPosition["Longitude"] as? Double {
+                lng = Double(longitute)
+            }
+        }
+        
+        coordinate = CLLocationCoordinate2DMake(lat, lng)
+        streetNumber = addressDict["HouseNumber"] as? String
+        route = addressDict["Street"] as? String
+        locality = addressDict["Subdistrict"] as? String
+        administrativeArea = addressDict["City"] as? String
+        subAdministrativeArea = addressDict["District"] as? String
+        country = addressDict["Country"] as? String
+        formattedAddress = addressDict["Label"] as? String
+        rawSource = locationDict
     }
     
     private func getComponent(_ component: String, inArray array: Any?, ofType type: String) -> String? {
@@ -167,7 +198,7 @@ extension Address: Codable {
         case neighborhood
         case postalCode = "postal_code"
         case country
-        case ISOcountryCode = "iso_country_code"
+        case isoCountryCode = "iso_country_code"
         case formattedAddress = "formatted_address"
         case lines
     }
@@ -186,7 +217,7 @@ extension Address: Codable {
         self.neighborhood = try values.decode(String.self, forKey: .neighborhood)
         self.postalCode = try values.decode(String.self, forKey: .postalCode)
         self.country = try values.decode(String.self, forKey: .country)
-        self.ISOcountryCode = try values.decode(String.self, forKey: .ISOcountryCode)
+        self.isoCountryCode = try values.decode(String.self, forKey: .isoCountryCode)
         self.formattedAddress = try values.decode(String.self, forKey: .formattedAddress)
         self.lines = try values.decode([String].self, forKey: .lines)
     }
@@ -204,7 +235,7 @@ extension Address: Codable {
         try container.encode(neighborhood, forKey: .neighborhood)
         try container.encode(postalCode, forKey: .postalCode)
         try container.encode(country, forKey: .country)
-        try container.encode(ISOcountryCode, forKey: .ISOcountryCode)
+        try container.encode(isoCountryCode, forKey: .isoCountryCode)
         try container.encode(formattedAddress, forKey: .formattedAddress)
         try container.encode(lines, forKey: .lines)
     }
