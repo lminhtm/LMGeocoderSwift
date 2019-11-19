@@ -41,10 +41,6 @@ open class Geocoder {
     /// Get shared instance.
     public static let shared = Geocoder()
     
-    init() {
-        
-    }
-    
     // MARK: GEOCODING
     
     /// Submits a forward-geocoding request using the specified string.

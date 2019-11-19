@@ -50,7 +50,7 @@
 		224E28B077D4A28608486EF6EC0689B5 /* Pods-LMGeocoderSwift_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LMGeocoderSwift_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		290F64F6E7BC7207576CB0F3797D4054 /* Pods-LMGeocoderSwift_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LMGeocoderSwift_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		31757979CA8C8FC4A1C3652B746AFBF7 /* Geocoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Geocoder.swift; path = LMGeocoderSwift/Classes/Geocoder.swift; sourceTree = "<group>"; };
-		355FCA046F0806B664726E51D615A393 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		355FCA046F0806B664726E51D615A393 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		36AA3BF9C0E0F569F949817E64A6A5D2 /* Pods-LMGeocoderSwift_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LMGeocoderSwift_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		385997828162CCD5E145283C1DB665B2 /* Pods-LMGeocoderSwift_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LMGeocoderSwift_Example-dummy.m"; sourceTree = "<group>"; };
 		45CC589B37E53B1C03A071CC5EC9BAA9 /* Pods-LMGeocoderSwift_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LMGeocoderSwift_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -65,18 +65,18 @@
 		607C0673861AD2CC482A03484A972899 /* LMGeocoderSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LMGeocoderSwift-dummy.m"; sourceTree = "<group>"; };
 		647EA31EE9ED315BA8A57EDC6AC54C4A /* LMGeocoderSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LMGeocoderSwift-Info.plist"; sourceTree = "<group>"; };
 		65F342E835928CA2D0B36443750B3713 /* LMGeocoderSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LMGeocoderSwift-prefix.pch"; sourceTree = "<group>"; };
-		68AB138041B75D560D191932B2DBFCBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		68AB138041B75D560D191932B2DBFCBC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		71B1AB8D3BF8AB242D5D191251657C30 /* Pods-LMGeocoderSwift_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LMGeocoderSwift_Tests-Info.plist"; sourceTree = "<group>"; };
 		7E44F3EE48A6F6497D813F67E69B48B2 /* Pods-LMGeocoderSwift_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LMGeocoderSwift_Tests.modulemap"; sourceTree = "<group>"; };
 		8CB53E7B0341660E8482AF4E9A4408B1 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Contacts.framework; sourceTree = DEVELOPER_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A9793D0D9ECC8954AF14A723E006448E /* Pods_LMGeocoderSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LMGeocoderSwift_Tests.framework; path = "Pods-LMGeocoderSwift_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A9793D0D9ECC8954AF14A723E006448E /* Pods_LMGeocoderSwift_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LMGeocoderSwift_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD15D784615C15C297EBA39B67EE098 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		AE38A6BC557948D54CAEB1FC5E857B47 /* LMGeocoderSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LMGeocoderSwift-umbrella.h"; sourceTree = "<group>"; };
 		C06BF56B5E1C681A4AB07511C4CA9774 /* Pods-LMGeocoderSwift_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LMGeocoderSwift_Example.modulemap"; sourceTree = "<group>"; };
-		C299C0265829944457C3D0C6DA779851 /* LMGeocoderSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LMGeocoderSwift.framework; path = LMGeocoderSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4F20581348EDFFCCCFB2AF7C0C9E18C /* LMGeocoderSwift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = LMGeocoderSwift.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		E15DFA09E1A9A987C1003B99EB46733C /* Pods_LMGeocoderSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LMGeocoderSwift_Example.framework; path = "Pods-LMGeocoderSwift_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C299C0265829944457C3D0C6DA779851 /* LMGeocoderSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LMGeocoderSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F20581348EDFFCCCFB2AF7C0C9E18C /* LMGeocoderSwift.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = LMGeocoderSwift.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		E15DFA09E1A9A987C1003B99EB46733C /* Pods_LMGeocoderSwift_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LMGeocoderSwift_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E181BB651F7839CA63DA29CD335311F0 /* GeocodingOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeocodingOperation.swift; path = LMGeocoderSwift/Classes/GeocodingOperation.swift; sourceTree = "<group>"; };
 		E2CE9970842D5DD8AE6B2D7B21595BCF /* Pods-LMGeocoderSwift_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LMGeocoderSwift_Example-Info.plist"; sourceTree = "<group>"; };
 		F1359FFA345ECD19CE8FD34E1A244ADD /* Pods-LMGeocoderSwift_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LMGeocoderSwift_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				01138881F50FFCD625739CFE796770CF /* Address.swift */,
-				4D6911EC7744DA6AEFCD66943DCF9DB1 /* AsynchronousOperation.swift */,
 				31757979CA8C8FC4A1C3652B746AFBF7 /* Geocoder.swift */,
+				4D6911EC7744DA6AEFCD66943DCF9DB1 /* AsynchronousOperation.swift */,
 				E181BB651F7839CA63DA29CD335311F0 /* GeocodingOperation.swift */,
 				9C43ECCCE89FC5D17241286161191128 /* Pod */,
 				83B3766111E20013F2675895697C7106 /* Support Files */,
@@ -512,8 +512,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

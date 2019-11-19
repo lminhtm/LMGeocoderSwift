@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "LMGeocoderSwift.app"
+               BuildableName = "LMGeocoderSwift_Example.app"
                BlueprintName = "LMGeocoderSwift_Example"
                ReferencedContainer = "container:LMGeocoderSwift.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "LMGeocoderSwift.app"
+            BuildableName = "LMGeocoderSwift_Example.app"
             BlueprintName = "LMGeocoderSwift_Example"
             ReferencedContainer = "container:LMGeocoderSwift.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "LMGeocoderSwift.app"
+            BuildableName = "LMGeocoderSwift_Example.app"
             BlueprintName = "LMGeocoderSwift_Example"
             ReferencedContainer = "container:LMGeocoderSwift.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "LMGeocoderSwift.app"
+            BuildableName = "LMGeocoderSwift_Example.app"
             BlueprintName = "LMGeocoderSwift_Example"
             ReferencedContainer = "container:LMGeocoderSwift.xcodeproj">
          </BuildableReference>
