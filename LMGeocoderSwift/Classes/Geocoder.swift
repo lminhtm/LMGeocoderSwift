@@ -6,7 +6,6 @@
 //  Copyright © 2018 LMinh. All rights reserved.
 //
 
-import UIKit
 import CoreLocation
 
 /// Exposes a service for geocoding and reverse geocoding.

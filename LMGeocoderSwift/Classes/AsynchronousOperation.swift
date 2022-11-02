@@ -5,7 +5,7 @@
 //  Created by LMinh on 11/19/19.
 //
 
-import UIKit
+import Foundation
 
 /// Concurrent operation state
 @objc private enum OperationState: Int {

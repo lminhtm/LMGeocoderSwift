@@ -5,11 +5,11 @@ import PackageDescription
 let package = Package(
     name: "LMGeocoderSwift",
     platforms: [
-        .macOS(.v10_10),
+        .macOS(.v13),
         .macCatalyst(.v13),
-        .iOS(.v9),
-        .tvOS(.v9),
-        .watchOS(.v2)
+        .iOS(.v11),
+        .tvOS(.v11),
+        .watchOS(.v4)
     ],
     products: [
         .library(
