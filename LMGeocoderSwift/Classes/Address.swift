@@ -165,21 +165,27 @@ public struct Address {
     }
     
     private func getComponent(_ component: String, inArray array: Any?, ofType type: String) -> String? {
-        
+
         guard let array = array as? NSArray else { return nil }
-        
+
         let index = array.indexOfObject { (obj, idx, stop) -> Bool in
-            return false
+            if let componentDict = obj as? [String: Any],
+               let types = componentDict["types"] as? [String],
+               types.contains(component) {
+                return true
+            } else {
+                return false
+            }
         }
-        
+
         if index == NSNotFound || index >= array.count {
             return nil
         }
-        
+
         if let dict = array[index] as? [String: Any] {
             return dict[type] as? String
         }
-        return nil;
+        return nil
     }
 }
 
